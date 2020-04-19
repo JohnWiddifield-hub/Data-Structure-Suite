@@ -10,6 +10,11 @@ import edu.ncsu.csc316.dsa.graph.Graph.Edge;
 import edu.ncsu.csc316.dsa.graph.Graph.Vertex;
 import edu.ncsu.csc316.dsa.list.positional.PositionalList;
 
+/**
+ * This will test the MinimumSpanningTreeUtil class for proper retrieval of
+ * minimum spanning trees
+ * @author John Widdifield
+ */
 public class MinimumSpanningTreeUtilTest {
 
 
@@ -27,6 +32,9 @@ public class MinimumSpanningTreeUtilTest {
         directedGraph = new AdjacencyListGraph<String, Highway>(true);
     }
     
+    /**
+     * This will test the Prim-Jarnik and kruskal methods
+     */
 	@SuppressWarnings({ "static-access", "unused" })
 	@Test
 	public void testPrimKrusk() {

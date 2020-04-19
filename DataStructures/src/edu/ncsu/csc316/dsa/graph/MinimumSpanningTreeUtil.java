@@ -12,14 +12,26 @@ import edu.ncsu.csc316.dsa.map.hashing.LinearProbingHashMap;
 import edu.ncsu.csc316.dsa.priority_queue.AdaptablePriorityQueue;
 import edu.ncsu.csc316.dsa.priority_queue.HeapAdaptablePriorityQueue;
 import edu.ncsu.csc316.dsa.priority_queue.HeapPriorityQueue;
-import edu.ncsu.csc316.dsa.priority_queue.PriorityQueue;
 import edu.ncsu.csc316.dsa.priority_queue.PriorityQueue.Entry;
 import edu.ncsu.csc316.dsa.set.HashSet;
 import edu.ncsu.csc316.dsa.set.Set;
 
+/**
+ * This class can determine minimum spanning trees for graphs using either kruskal
+ * or prims algorithm
+ * @author John Widdifield and NCSU staff
+ */
 public class MinimumSpanningTreeUtil {
     
 
+	/**
+	 * This will perform kruskals algorithm on a graph and return the resulting 
+	 * minimum spanning tree
+	 * @param <V>	generic vertex for the graph
+	 * @param <E>	generic edge for the graph
+	 * @param g		Graph you wish to get the MST for 
+	 * @return	a positional list of edges representing the MST
+	 */
     public static <V, E extends Weighted> PositionalList<Edge<E>> kruskal(Graph<V, E> g) {
     	PositionalList<Edge<E>> tree = new PositionalLinkedList<>();
     	HeapPriorityQueue<Integer, Edge<E>> Q = new HeapPriorityQueue<>();
@@ -49,6 +61,14 @@ public class MinimumSpanningTreeUtil {
     	return tree;
     }
     
+	/**
+	 * This will perform the Prim-Jarnik algorithm on a graph and return the resulting 
+	 * minimum spanning tree
+	 * @param <V>	generic vertex for the graph
+	 * @param <E>	generic edge for the graph
+	 * @param g		Graph you wish to get the MST for 
+	 * @return	a positional list of edges representing the MST
+	 */
     public static <V, E extends Weighted> PositionalList<Edge<E>> primJarnik(Graph<V,E> g) {
         AdaptablePriorityQueue<Integer, Vertex<V>> q = new HeapAdaptablePriorityQueue<>();
         Map<Vertex<V>, Integer> weights = new LinearProbingHashMap<>();

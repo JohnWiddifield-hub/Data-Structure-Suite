@@ -9,6 +9,10 @@ import edu.ncsu.csc316.dsa.graph.Graph.Edge;
 import edu.ncsu.csc316.dsa.graph.Graph.Vertex;
 import edu.ncsu.csc316.dsa.map.Map;
 
+/**
+ * This will test the GraphTraversalUtil class for proper traversal of graphs
+ * @author John Widdifield
+ */
 public class GraphTraversalUtilTest {
 
 	private GraphTraversalUtil tUtil;
@@ -25,6 +29,9 @@ public class GraphTraversalUtilTest {
         directedGraph = new AdjacencyListGraph<String, Integer>(true);
     }
     
+    /**
+     * This will test the depthFirstSearch method
+     */
 	@SuppressWarnings("static-access")
 	@Test
 	public void testDFS() {
@@ -83,6 +90,9 @@ public class GraphTraversalUtilTest {
 		
 	}
 	
+    /**
+     * This will test the breadthFirstSearch method
+     */
 	@SuppressWarnings({ "unused", "static-access" })
 	@Test
 	public void testBFS() {

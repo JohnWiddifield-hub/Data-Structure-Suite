@@ -10,6 +10,11 @@ import edu.ncsu.csc316.dsa.graph.Graph.Edge;
 import edu.ncsu.csc316.dsa.graph.Graph.Vertex;
 import edu.ncsu.csc316.dsa.map.Map;
 
+/**
+ * This will test the ShortestPathUtil class for proper retrieval of shortest paths
+ * in a graph
+ * @author John Widdifield
+ */
 public class ShortestPathUtilTest {
 
 	private ShortestPathUtil sUtil;
@@ -25,6 +30,10 @@ public class ShortestPathUtilTest {
         undirectedGraph = new AdjacencyListGraph<String, Highway>();
         directedGraph = new AdjacencyListGraph<String, Highway>(true);
     }
+    
+    /**
+     * This will test the dijkstra method
+     */
 	@SuppressWarnings({ "unused", "static-access" })
 	@Test
 	public void testDijkstra() {
@@ -109,6 +118,9 @@ public class ShortestPathUtilTest {
 	        assertEquals(0, trav.get(v6).intValue());
 	}
 	
+    /**
+     * This will test the ShortestPathTree method
+     */
 	@SuppressWarnings({ "unused", "static-access" })
 	@Test
 	public void testShortTree() {

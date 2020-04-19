@@ -1,23 +1,35 @@
 package edu.ncsu.csc316.dsa.graph;
 
-import edu.ncsu.csc316.dsa.Position;
 import edu.ncsu.csc316.dsa.Weighted;
 import edu.ncsu.csc316.dsa.graph.Graph.Edge;
 import edu.ncsu.csc316.dsa.graph.Graph.Vertex;
-import edu.ncsu.csc316.dsa.list.positional.PositionalLinkedList;
-import edu.ncsu.csc316.dsa.list.positional.PositionalList;
 import edu.ncsu.csc316.dsa.map.Map;
 import edu.ncsu.csc316.dsa.map.hashing.LinearProbingHashMap;
-import edu.ncsu.csc316.dsa.priority_queue.AdaptablePriorityQueue;
 import edu.ncsu.csc316.dsa.priority_queue.HeapAdaptablePriorityQueue;
-import edu.ncsu.csc316.dsa.priority_queue.HeapPriorityQueue;
-import edu.ncsu.csc316.dsa.priority_queue.PriorityQueue;
 import edu.ncsu.csc316.dsa.priority_queue.PriorityQueue.Entry;
 import edu.ncsu.csc316.dsa.set.HashSet;
 import edu.ncsu.csc316.dsa.set.Set;
 
+/**
+ * This offers maps made by dijkstra's algorithm and shortest path tree as maps given a graph
+ * 
+ * Implemented using Data Structures and Algorithms in 
+ * Java 6th edition by Michael T. Goodrich
+ * 
+ * @author John Widdifield and NCSU staff
+ *
+ */
 public class ShortestPathUtil {
     
+	/**
+	 * This will perform dijkstra's algorithm on a graph and return the resulting map
+	 * @param <V> Generic vertex for the graph
+	 * @param <E> Generic Edge for the graph
+	 * @param g graph you wish to perform dijkstra's algorithm for
+	 * @param src	Vertex to start from
+	 * @return a map containing the verteces for keys and an integer for values which 
+	 * represents the cost to go from src to that vertex.
+	 */
     public static <V, E extends Weighted> Map<Vertex<V>, Integer> dijkstra(Graph<V,E> g, Vertex<V> src) {
     	Map<Vertex<V>, Integer> weights = new LinearProbingHashMap<>();
     	HeapAdaptablePriorityQueue<Integer, Vertex<V>> que = new HeapAdaptablePriorityQueue<>();
@@ -56,6 +68,16 @@ public class ShortestPathUtil {
  	return weights;
     }
 
+    /**
+     * Given a mapping of costs from a specified vertex this will form the shortest path tree
+     * from a root to all vertices
+     * @param <V>	Generic vertex for your graph
+     * @param <E>	Generic edge for your graph
+     * @param g		Graph you wish to get the shortest path tree for
+     * @param s		Vertex you wish to start from 
+     * @param distances	Map of minimum distances of vertices from the start vertex
+     * @return	a map representing the verteces and edges which form a shortest path tree
+     */
     public static <V, E extends Weighted> Map<Vertex<V>, Edge<E>> shortestPathTree(Graph<V,E> g, Vertex<V> s, Map<Vertex<V>, Integer> distances) {
     	Map<Vertex<V>, Edge<E>> edges = new LinearProbingHashMap<>();
     	for(Vertex<V> v : distances) {
