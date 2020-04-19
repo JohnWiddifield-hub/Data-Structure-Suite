@@ -34,25 +34,25 @@ public class MinimumSpanningTreeUtil {
 	 */
     public static <V, E extends Weighted> PositionalList<Edge<E>> kruskal(Graph<V, E> g) {
     	PositionalList<Edge<E>> tree = new PositionalLinkedList<>();
-    	HeapPriorityQueue<Integer, Edge<E>> Q = new HeapPriorityQueue<>();
-    	UpTreeDisjointSetForest<Vertex<V>> D = new UpTreeDisjointSetForest<>();
+    	HeapPriorityQueue<Integer, Edge<E>> queue = new HeapPriorityQueue<>();
+    	UpTreeDisjointSetForest<Vertex<V>> disjointSetForest = new UpTreeDisjointSetForest<>();
     	
     	for(Edge<E> e : g.edges()) {
-    		Q.insert(e.getElement().getWeight(), e);
+    		queue.insert(e.getElement().getWeight(), e);
     	}
     	
     	for(Vertex<V> v : g.vertices()) {
-    		D.makeSet(v);
+    		disjointSetForest.makeSet(v);
     	}
     	
     	int components = g.numVertices();
     	
     	while(components > 1) {
-    		Edge<E> e = Q.deleteMin().getValue();
-    		Position<Vertex<V>> u = D.find(g.endVertices(e)[0]);
-    		Position<Vertex<V>> v = D.find(g.endVertices(e)[1]);
+    		Edge<E> e = queue.deleteMin().getValue();
+    		Position<Vertex<V>> u = disjointSetForest.find(g.endVertices(e)[0]);
+    		Position<Vertex<V>> v = disjointSetForest.find(g.endVertices(e)[1]);
     		if(!u.equals(v)) {
-    			D.union(u, v);
+    			disjointSetForest.union(u, v);
     			tree.addLast(e);
     			components--;
     		}
@@ -69,7 +69,7 @@ public class MinimumSpanningTreeUtil {
 	 * @param g		Graph you wish to get the MST for 
 	 * @return	a positional list of edges representing the MST
 	 */
-    public static <V, E extends Weighted> PositionalList<Edge<E>> primJarnik(Graph<V,E> g) {
+    public static <V, E extends Weighted> PositionalList<Edge<E>> primJarnik(Graph<V, E> g) {
         AdaptablePriorityQueue<Integer, Vertex<V>> q = new HeapAdaptablePriorityQueue<>();
         Map<Vertex<V>, Integer> weights = new LinearProbingHashMap<>();
         Set<Vertex<V>> known = new HashSet<>();

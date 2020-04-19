@@ -198,6 +198,12 @@ public class ShortestPathUtilTest {
         assertEquals(45, shortestPathTree.get(v5).getElement().getWeight());
 		
 	}
+	
+	/**
+	 * This class is used to test the weighted rating of edges
+	 * @author John Widdifield and NCSU staff
+	 *
+	 */
     private class Highway implements Weighted {
         @SuppressWarnings("unused")
 		private String name;

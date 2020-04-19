@@ -1,6 +1,7 @@
 edu.ncsu.csc316.dsa
 edu.ncsu.csc316.dsa.data
 edu.ncsu.csc316.dsa.disjoint_set
+edu.ncsu.csc316.dsa.graph
 edu.ncsu.csc316.dsa.io
 edu.ncsu.csc316.dsa.list
 edu.ncsu.csc316.dsa.list.positional

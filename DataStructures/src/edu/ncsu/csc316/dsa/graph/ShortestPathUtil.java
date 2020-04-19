@@ -30,7 +30,7 @@ public class ShortestPathUtil {
 	 * @return a map containing the verteces for keys and an integer for values which 
 	 * represents the cost to go from src to that vertex.
 	 */
-    public static <V, E extends Weighted> Map<Vertex<V>, Integer> dijkstra(Graph<V,E> g, Vertex<V> src) {
+    public static <V, E extends Weighted> Map<Vertex<V>, Integer> dijkstra(Graph<V, E> g, Vertex<V> src) {
     	Map<Vertex<V>, Integer> weights = new LinearProbingHashMap<>();
     	HeapAdaptablePriorityQueue<Integer, Vertex<V>> que = new HeapAdaptablePriorityQueue<>();
     	Map<Vertex<V>, Entry<Integer, Vertex<V>>> pqEntries = new LinearProbingHashMap<>();
@@ -78,7 +78,7 @@ public class ShortestPathUtil {
      * @param distances	Map of minimum distances of vertices from the start vertex
      * @return	a map representing the verteces and edges which form a shortest path tree
      */
-    public static <V, E extends Weighted> Map<Vertex<V>, Edge<E>> shortestPathTree(Graph<V,E> g, Vertex<V> s, Map<Vertex<V>, Integer> distances) {
+    public static <V, E extends Weighted> Map<Vertex<V>, Edge<E>> shortestPathTree(Graph<V, E> g, Vertex<V> s, Map<Vertex<V>, Integer> distances) {
     	Map<Vertex<V>, Edge<E>> edges = new LinearProbingHashMap<>();
     	for(Vertex<V> v : distances) {
     		if(!v.equals(s)) {

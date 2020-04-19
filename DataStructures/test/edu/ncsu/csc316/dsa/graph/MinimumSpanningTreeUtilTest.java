@@ -108,6 +108,11 @@ public class MinimumSpanningTreeUtilTest {
         assertEquals(e4, minSpanTree.before(minSpanTree.last()).getElement());
 	}
 
+	/**
+	 * This class is used to test the weighted rating of edges
+	 * @author John Widdifield and NCSU staff
+	 *
+	 */
     private class Highway implements Weighted {
         @SuppressWarnings("unused")
 		private String name;
